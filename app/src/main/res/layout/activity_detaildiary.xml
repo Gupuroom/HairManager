@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="detail"
+            type="com.example.hm_project.view.activity.DetailDiaryActivity" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detailRootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/detailPhotoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/detailViewPager2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintWidth_percent="1"
+                app:layout_constraintHeight_percent="1"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/deatialLine1"
+            style="@style/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            app:layout_constraintStart_toStartOf="@+id/detailPhotoLayout"
+            app:layout_constraintTop_toBottomOf="@id/detailPhotoLayout"
+            android:layout_marginTop="10dp"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/detailScrollView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@+id/detailRootLayout"
+            app:layout_constraintRight_toRightOf="@+id/detailRootLayout"
+            app:layout_constraintTop_toBottomOf="@+id/detailPhotoLayout"
+            app:layout_constraintWidth_percent="1"
+            android:layout_marginTop="20dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/detailConstrainlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:id="@+id/detailTitle_ContentTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="다이어리 제목입니다."
+                    android:text="@{detail.diaryTitle}"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_goneMarginTop="20dp"
+                    app:layout_constraintLeft_toLeftOf="@id/detailConstrainlayout"
+                    app:layout_constraintRight_toRightOf="@id/detailConstrainlayout"
+                    app:layout_constraintTop_toTopOf="@+id/detailConstrainlayout"/>
+
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/detailContentScroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/detailTitle_ContentTV"
+                    app:layout_constraintTop_toBottomOf="@+id/detailTitle_ContentTV"
+                    android:layout_marginTop="20dp">
+                    <TextView
+                        android:id="@+id/detailContent_ContentTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:scrollbarStyle="insideInset"
+                        android:overScrollMode="always"
+                        android:hint="다이어리 내용입니다."
+                        android:text="@{detail.diaryContent}"
+                        android:textSize="22dp"
+
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/detailContentScroll"
+                        app:layout_constraintTop_toBottomOf="@+id/detailContentScroll" />
+                </androidx.core.widget.NestedScrollView>
+
+                <TextView
+                    android:id="@+id/detailSeletedDateTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="@{detail.diaryDate}"
+                    android:textSize="15sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detailContentScroll"
+                    app:layout_constraintHorizontal_bias="0.95"
+                    />
+                <View
+                    android:id="@+id/deatialLine2"
+                    style="@style/Divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    app:layout_constraintStart_toStartOf="@+id/detailContentScroll"
+                    app:layout_constraintTop_toBottomOf="@id/detailSeletedDateTV"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/detailNotifyTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="알림 설정"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/deatialLine2"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <CheckBox
+                    android:id="@+id/detailNotifyCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@{detail.notifyCheck}"
+                    android:clickable="false"
+                    app:layout_constraintLeft_toRightOf="@+id/detailNotifyTV"
+                    app:layout_constraintTop_toBottomOf="@+id/deatialLine2"
+                    android:layout_marginTop="20dp"
+                    />
+                <LinearLayout
+                    android:id="@+id/detailDiaryNotifyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/detailNotifyTV"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint=""
+                        android:text="날짜 : "
+                        android:textSize="20dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{detail.notifyDate}"
+                        android:textSize="20dp"
+                        android:layout_marginStart="1dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="10:00"
+                        android:text="시간 :"
+                        android:textSize="20dp"
+                        android:layout_marginStart="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{detail.notifyTime}"
+                        android:textSize="20dp"
+                        android:layout_marginStart="1dp"/>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

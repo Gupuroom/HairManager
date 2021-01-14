@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="calendar"
+            type="com.example.hm_project.view.activity.CalendarActivity"/>
+        <variable
+            name="simpleDiary"
+            type="com.example.hm_project.data.SimpleDiary" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.CalendarActivity">
+
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/calendarView"
+            app:layout_constraintWidth_percent="1"
+            app:layout_constraintHeight_percent="0.6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mcv_selectionColor="#00F"
+            app:mcv_showOtherDates="defaults">
+        </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
+
+        <View
+            style="@style/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/calendarView"
+            app:layout_constraintTop_toBottomOf="@id/calendarView"
+            app:layout_constraintBottom_toTopOf="@id/calendarLine2"/>
+        <View
+            android:id="@+id/calendarLine2"
+            style="@style/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            app:layout_constraintStart_toStartOf="@+id/calendarView"
+            app:layout_constraintTop_toBottomOf="@id/calendarView" />
+
+        <TextView
+            android:id="@+id/calendarDiaryDateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintHeight_percent="0.1"
+            android:text="@{calendar.diaryDate}"
+            android:textAlignment="center"
+            android:textColor="@color/black_de"
+            android:textSize="25sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calendarLine2"
+            app:layout_constraintHorizontal_bias="0.5"/>
+
+        <View
+            android:id="@+id/calendarLine3"
+            style="@style/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calendarDiaryDateTV" />
+
+        <TextView
+            android:id="@+id/calendarDiaryNullTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="기록된 일기가 없습니다."
+            android:textAlignment="center"
+            android:textSize="35sp"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@id/calendarLine3"
+            app:layout_constraintTop_toBottomOf="@id/calendarLine3"
+            app:layout_constraintBottom_toTopOf="@id/calendarPlusBtn"/>
+        <LinearLayout
+            android:id="@+id/diaryLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.3"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@+id/calendarLine3"
+            app:layout_constraintTop_toBottomOf="@+id/calendarDiaryDateTV" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/diaryConstraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/diary1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="1dp"
+                    app:layout_constraintHeight_percent="0.33"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/diary2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.33"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="@+id/diary1"
+                    app:layout_constraintTop_toBottomOf="@+id/diary1"  />
+
+                <Button
+                    android:id="@+id/diary3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.33"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="@+id/diary2"
+                    app:layout_constraintTop_toBottomOf="@+id/diary2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/calendarPlusBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@drawable/plusbtn"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintVertical_bias="0.0"
+            app:backgroundTint="@color/white"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

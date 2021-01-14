@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "975600781503",
+    "firebase_url": "https://hairmanager-432b1.firebaseio.com",
+    "project_id": "hairmanager-432b1",
+    "storage_bucket": "hairmanager-432b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975600781503:android:d4016793d6d2ca579c5e0a",
+        "android_client_info": {
+          "package_name": "com.example.hm_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975600781503-fm3p71e8h52a8400t11c2t1c07jvralu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkailkywuZ8L7OhVwjpEhl44q5ijvR5EI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975600781503-fm3p71e8h52a8400t11c2t1c07jvralu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

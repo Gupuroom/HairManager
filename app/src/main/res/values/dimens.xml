@@ -1,0 +1,16 @@
+<resources>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="selected_text_size">35dp</dimen>
+    <dimen name="text_size">30dp</dimen>
+
+    <!-- 다이어리 사진용 -->
+    <dimen name="pageMargin">10dp</dimen>
+    <dimen name="offset">10dp</dimen>
+    <dimen name="pageMarginAndOffset">20dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+</resources>

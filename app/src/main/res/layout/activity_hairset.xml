@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="hairSet"
+            type="com.example.hm_project.view.activity.HairSetActivity"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            >
+
+            <TextView
+                android:id="@+id/thinningTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="머리 숱"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:paddingTop="10dp"
+                />
+            <RadioGroup
+                android:id="@+id/thinningGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/thinningTV">
+
+                <RadioButton
+                    android:id="@+id/thinningRadioBtn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="많음"
+                    android:textSize="18sp"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/thinningRadioBtn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="보통"
+                    android:textSize="18sp"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/thinningRadioBtn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="적음"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/qualityTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="모질"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/thinningGroup"
+                android:paddingTop="10dp"
+                />
+            <RadioGroup
+                android:id="@+id/qualityGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/qualityTV">
+
+                <RadioButton
+                    android:id="@+id/qualityRadioBtn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="곱슬"
+                    android:textSize="18sp"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/qualityRadioBtn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="반곱슬"
+                    android:textSize="18sp"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/qualityRadioBtn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="직모"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    />
+            </RadioGroup>
+            <TextView
+                android:id="@+id/shapeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="두상"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/qualityGroup"
+                android:paddingTop="10dp"
+
+                />
+            <RadioGroup
+                android:id="@+id/shapeGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/shapeTV">
+
+                <RadioButton
+                    android:id="@+id/shapeRadioBtn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="장두"
+                    android:textSize="18sp"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/shapeRadioBtn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="단두"
+                    android:textSize="18sp"
+                    android:layout_weight="1"/>
+
+                <RadioButton
+                    android:id="@+id/shapeRadioBtn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="옆짱구"
+                    android:textSize="18sp"
+                    android:layout_weight="1"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/colorTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="머리색"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shapeGroup"
+                android:paddingTop="20dp"
+                android:layout_marginTop="20dp"
+                />
+
+
+            <View
+                android:id="@+id/colorSelectView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/circle_button"
+
+                app:layout_constraintLeft_toRightOf="@+id/colorTV"
+                app:layout_constraintTop_toBottomOf="@+id/shapeGroup"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:paddingTop="30dp"/>
+
+            <com.divyanshu.colorseekbar.ColorSeekBar
+                android:id="@+id/colorSeekBar"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/colorSelectView"
+                android:layout_marginTop="20dp"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</layout>

@@ -1,0 +1,94 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.hm_project"
+
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
+}
+dependencies {
+    // 권한체크
+    implementation 'gun0912.ted:tedpermission:1.0.3'
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation files('libs/json-simple-1.1.1.jar')
+    implementation 'androidx.navigation:navigation-runtime:2.3.1'
+
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
+    implementation 'com.google.firebase:firebase-analytics:18.0.0'
+
+
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    // 리사이클러뷰 다중삭제를 위한 리사이클러 셀렉션 의존성 추가
+    implementation 'androidx.recyclerview:recyclerview-selection:1.0.0'
+
+    // FCM 의존성
+    implementation 'com.google.firebase:firebase-messaging:21.0.0'
+
+    // 하단 네비게이션 바
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment:2.3.1'
+    implementation 'androidx.navigation:navigation-ui:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    //카카오
+    implementation 'com.kakao.sdk:usermgmt:1.16.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //캘린더 뷰
+    implementation 'com.github.prolificinteractive:material-calendarview:1.4.3'
+    //컬러 피커
+    implementation 'com.jaredrummler:colorpicker:1.1.0'
+    implementation 'petrov.kristiyan:colorpicker-library:1.1.10'
+    //원형 이미지뷰
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //사진 뷰페이저 , 슬라이드기능
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    //리사이클 뷰
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    //glide 이미지 라이브러리
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //이미지 전송위해 OkHttp3
+    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    //컬러 피커
+    implementation 'com.github.altaf2892:colorseekbar:1.0.3'
+
+}

@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="write"
+            type="com.example.hm_project.view.activity.WriteDiaryActivity" />
+        <variable
+            name="viewModel"
+            type="com.example.hm_project.etc.WriteDiaryViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/writeScrollView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="1">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/writeConstrainlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <EditText
+                    android:id="@+id/writeTitleEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@={viewModel.liveDiaryTitle}"
+                    android:hint="제목"
+                    android:textSize="20sp"
+                    android:layout_marginVertical="20dp"
+                    app:layout_constraintLeft_toLeftOf="@id/writeConstrainlayout"
+                    app:layout_constraintRight_toRightOf="@id/writeConstrainlayout"
+                    app:layout_constraintStart_toStartOf="@id/writeConstrainlayout"
+                    app:layout_constraintTop_toTopOf="@id/writeConstrainlayout"
+                     />
+                <TextView
+                    android:id="@+id/writeTitleCheckTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="제목은 33자 이내로 적어야 합니다."
+                    android:textSize="10sp"
+                    android:textColor="@color/color4"
+                    app:layout_constraintRight_toRightOf="@id/writeConstrainlayout"
+                    app:layout_constraintTop_toBottomOf="@id/writeTitleEdit"
+                    android:visibility="invisible"
+                    />
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/writeContentScroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/writeTitleEdit"
+                    app:layout_constraintTop_toBottomOf="@+id/writeTitleCheckTV">
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/writeContentEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:scrollbarStyle="insideInset"
+                        android:overScrollMode="always"
+                        android:text="@={viewModel.liveDiaryContent}"
+                        android:hint="내용"
+                        android:textSize="20sp"
+                        android:textAlignment="inherit"
+                        android:background="@drawable/border"
+
+                        android:layout_marginVertical="15dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/writeContentScroll"
+                        app:layout_constraintTop_toBottomOf="@+id/writeContentScroll" />
+
+                </androidx.core.widget.NestedScrollView>
+                <TextView
+                    android:id="@+id/writeContentCheckTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="내용은 5,592,405자 이내로 적어야 합니다."
+                    android:textSize="10sp"
+                    android:textColor="@color/color4"
+                    app:layout_constraintRight_toRightOf="@id/writeConstrainlayout"
+                    app:layout_constraintTop_toBottomOf="@id/writeContentScroll"
+                    android:visibility="invisible" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/photoLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/writeContentScroll"
+                    app:layout_constraintTop_toBottomOf="@+id/writeContentScroll"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/writePhotoTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="사진 선택"
+                        android:textSize="20dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/writeGoAlbum"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/goalbum2"
+                        android:onClick="@{write::goPhotoAlbum}"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintHeight_percent="1"
+                        app:layout_constraintWidth_percent="0.1"
+               />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/writeViewPager2"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    app:layout_constraintStart_toStartOf="@+id/photoLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/photoLayout"
+                    />
+
+                <View
+                    android:id="@+id/writeLine1"
+                    style="@style/Divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/writeViewPager2"
+                    android:layout_marginTop="5dp"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/wirteLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/writeViewPager2"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/writeDateTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="작성 날짜 : "
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/writeSeletedDateTV"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintVertical_chainStyle="spread_inside"/>
+
+                    <TextView
+                        android:id="@+id/writeSeletedDateTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.liveDiaryDate}"
+                        android:textSize="20sp"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintLeft_toRightOf="@+id/writeDateTV"
+                        app:layout_constraintRight_toLeftOf="@+id/writeDateTabButton"
+                        app:layout_constraintStart_toEndOf="@+id/writeDateTV"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="spread"
+                        android:layout_marginStart="15dp"
+                        />
+
+                    <View
+                        android:id="@+id/writeDateTabButton"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/tabdownbutton"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintHeight_percent="1"
+                        app:layout_constraintWidth_percent="0.1"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <DatePicker
+                    android:id="@+id/writediaryDatePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:datePickerMode="spinner"
+                    android:spinnersShown="true"
+                    android:calendarViewShown="false"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/wirteLayout"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    android:visibility="gone"/>
+
+
+                <View
+                    android:id="@+id/writeLine2"
+                    style="@style/Divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/writediaryDatePicker"
+                    android:layout_marginTop="5dp"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/notifyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/writediaryDatePicker"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/writeNotifyTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="알림"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/writeNotifyCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:thumb="@drawable/switch_thumb_selector"
+
+                        app:layout_constraintLeft_toRightOf="@+id/writeNotifyTV"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:checked="@={viewModel.liveNotifyCheck}"
+                        android:layout_marginStart="10dp"/>
+
+                    <View
+                        android:id="@+id/notiyDateTabButton"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/tabdownbutton"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintHeight_percent="1"
+                        app:layout_constraintWidth_percent="0.1"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/notifyDateTimeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.liveNotifyDateTime}"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/notifyLayout"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:id="@+id/writeDiaryNotifyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/notifyDateTimeTV"
+                    app:layout_constraintStart_toStartOf="@+id/notifyDateTimeTV">
+
+                    <TextView
+                        android:id="@+id/notifyDateTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="알림 날짜"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"/>
+                    <DatePicker
+                        android:id="@+id/writeNotifyDatePicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:datePickerMode="spinner"
+                        android:spinnersShown="true"
+                        android:calendarViewShown="false"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:id="@+id/notifyTimeTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="알림 시간"
+                        android:textSize="20sp"/>
+                    <TimePicker
+                        android:id="@+id/writeNotifyTimePicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:timePickerMode="spinner"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
